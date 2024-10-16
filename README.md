@@ -3,3 +3,5 @@
 requirement
 - echo framework
 - gorm
+- godotenv
+- postgresql

@@ -2,3 +2,4 @@
 
 requirement
 - echo framework
+- gorm

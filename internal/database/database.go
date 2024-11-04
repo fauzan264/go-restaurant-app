@@ -13,6 +13,6 @@ func GetDB(dbAddress string) *gorm.DB {
 		log.Fatal("failed to connect database", err)
 	}
 
-	SeedDB(dbAddress)
+	SeedDB(db)
 	return db
 }

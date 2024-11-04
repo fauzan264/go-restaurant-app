@@ -1,15 +1,12 @@
 package database
 
 import (
-	"log"
-
 	"github.com/fauzan264/go-restaurant-app/internal/model"
 	"github.com/fauzan264/go-restaurant-app/internal/model/constant"
-	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-func SeedDB(databaseUrl string) {
+func SeedDB(db *gorm.DB) {
 	foodMenu := []model.MenuItem{
 		{
 			Name: "Bakmie",
@@ -40,12 +37,8 @@ func SeedDB(databaseUrl string) {
 		},
 	}
 
-	db, err := gorm.Open(postgres.Open(databaseUrl))
-	if err != nil {
-		log.Fatal(err)
-	}
+	db.AutoMigrate(&model.MenuItem{})
 
-	// db.AutoMigrate(&model.MenuItem{})
 	if err := db.First(&model.MenuItem{}).Error; err == gorm.ErrRecordNotFound {
 		db.Create(&foodMenu)
 		db.Create(&drinkMenu)

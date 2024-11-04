@@ -35,6 +35,6 @@ func main() {
 	handler := restapi.NewHandler(restoUsecase)
 
 	restapi.LoadRoutes(e, handler)
-	// e.GET("/menu", restapi.getMenu)
+	
 	e.Logger.Fatal(e.Start(port))
 }
